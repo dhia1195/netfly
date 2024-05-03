@@ -1,0 +1,132 @@
+<div class="container">
+    <form [formGroup]="offreForm" (ngSubmit)="addOffre()">
+        <div class="form-group">
+            <label for="reduction">Réduction</label>
+            <input
+                formControlName="reduction"
+                type="text"
+                class="form-control"
+                id="reduction"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('reduction').invalid &&
+                    (offreForm.get('reduction').touched ||
+                        offreForm.get('reduction').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="offreForm.get('reduction').errors?.required">
+                    La réduction est requise.
+                </div>
+                <div *ngIf="offreForm.get('reduction').errors?.minlength">
+                    La réduction doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input
+                formControlName="name"
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('name').invalid &&
+                    (offreForm.get('name').touched ||
+                        offreForm.get('name').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="offreForm.get('name').errors?.required">
+                    Le nom est requis.
+                </div>
+                <div *ngIf="offreForm.get('name').errors?.minlength">
+                    Le nom doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="condition">Condition</label>
+            <input
+                formControlName="condition"
+                type="text"
+                class="form-control"
+                id="condition"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('condition').invalid &&
+                    (offreForm.get('condition').touched ||
+                        offreForm.get('condition').dirty)
+                "
+                class="text-danger"
+            >
+                <div
+                    *ngIf="offreForm.get('condition').errors?.required"
+                >
+                    La condition est requise.
+                </div>
+                <div
+                    *ngIf="offreForm.get('condition').errors?.minlength"
+                >
+                    La condition doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dateD" class="form-label">Date de début</label>
+                    <input
+                        formControlName="dateD"
+                        type="date"
+                        class="form-control"
+                        id="dateD"
+                        placeholder="YYYY-MM-DD"
+                        required
+                    />
+                    <div class="invalid-feedback" *ngIf="offreForm.get('dateD').invalid && offreForm.get('dateD').touched">
+                        La date de début est requise.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dateF" class="form-label">Date de fin</label>
+                    <input
+                        formControlName="dateF"
+                        type="date"
+                        class="form-control"
+                        id="dateF"
+                        placeholder="YYYY-MM-DD"
+                        required
+                    />
+                    <div class="invalid-feedback" *ngIf="offreForm.get('dateF').invalid && offreForm.get('dateF').touched">
+                        La date de fin est requise.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="produits">Produit</label>
+            <select formControlName="produits" class="form-control">
+                <option *ngFor="let produit of produitsList" [value]="produit._id">{{ produit.reference }}</option>
+            </select>
+            <div *ngIf="offreForm.get('produits').invalid && offreForm.get('produits').touched" class="text-danger">
+                Le produit est requis.
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-3">Ajouter l'offre</button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="ajoutAvecSucces" class="alert alert-success mt-3">Offre ajoutée avec succès !</div>
+    </form>
+</div>

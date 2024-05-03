@@ -1,0 +1,46 @@
+.btn-professional {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-professional:hover {
+  background-color: #0056b3;
+}
+
+.btn-professional:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.btn-professional:active {
+  background-color: #004080;
+}
+
+.btn-update {
+  background-color: #17a2b8;
+  color: #fff;
+  border-color: #17a2b8;
+}
+
+.btn-update:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}

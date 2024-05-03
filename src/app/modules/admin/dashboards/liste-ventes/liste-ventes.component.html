@@ -1,0 +1,50 @@
+<div class="container-fluid" style="width: 100%">
+  <div class="row">
+    <button mat-flat-button [routerLink]="'/dashboards/addventes'" class="col-auto text-white btn-add">
+      <mat-icon>exposure_plus_1</mat-icon>
+      Ajouter
+    </button>
+  </div>
+  <div class="row">
+    <table>
+      <thead>
+        <tr>
+          <th>Produits</th>
+          <th>Date</th>
+          <th>Statut de Paiement</th>
+          <th>Client</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let vente of ventesList">
+            <td>
+              <select>
+                <option *ngFor="let produit of vente.produitDetails" [disabled]="true">
+                  {{produit.detail.nom}} : {{produit.quantite}}
+                </option>
+              </select>
+            </td>
+            <td>{{ vente.dateV | date:'medium' }}</td>
+            <td>{{ vente.statut_paiement ? 'Paid' : 'Not Paid' }}</td>
+            <td>{{ vente.clientDetails.nom }} {{  vente.clientDetails.prenom }}</td>
+
+            <td>
+              <button [routerLink]="'/dashboards/updateventes/' + vente._id" class="btn btn-update">
+                Modifier
+              </button>
+              <button  (click)="onSendEmail(vente.clientDetails._id,vente)" class="btn btn-update">
+                Facturer
+              </button>
+            </td>
+
+            <td>
+              <button (click)="deleteVente(vente._id)" class="btn btn-delete">
+                Supprimer
+              </button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

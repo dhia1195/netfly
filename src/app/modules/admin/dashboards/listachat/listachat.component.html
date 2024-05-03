@@ -1,0 +1,70 @@
+
+
+<div class="container-fluid" style="width: 100%">
+  <div class="row">
+    
+    <input type="text" placeholder="Search" [(ngModel)]="query" (input)="searchAchats()">
+    <button
+    class="ml-4"
+    mat-flat-button
+    [color]="'primary'"
+    [routerLink]="'/dashboards/addachats'">
+    <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+    <span class="ml-2 mr-1">Add</span>
+</button>
+  
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Quantity</th>
+          <th>Prix Unitaire</th>
+          <th>Date</th>
+          <th>Paiement</th>
+          <th>FournisseurId</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let achat of achatsList">
+          <td>{{ achat.article }}</td>
+          <td>{{ achat.quantity }}</td>
+          <td>{{ achat.prix_unitaire }}</td>
+          <td>{{ achat.date | date: 'medium' }}</td>
+          <td>{{ achat.paiement }}</td>
+          <td>{{ achat.fournisseurs[0].nom }}</td>
+          <td>
+            <button [routerLink]="'/dashboards/updateachats/' + achat._id" class="btn btn-info btn-update">Edit</button>
+            <button (click)="deleteAchat(achat._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+    <style>
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .table th {
+    background-color: #f2f2f2;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .table tbody tr:hover {
+    background-color: #ddd;
+  }
+</style>

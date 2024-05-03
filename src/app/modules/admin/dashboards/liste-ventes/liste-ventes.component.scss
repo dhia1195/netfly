@@ -1,0 +1,42 @@
+.container-fluid {
+  width: 100%;
+
+  .row {
+    margin-bottom: 10px;
+  }
+
+  .btn-add {
+    background-color: rgb(83, 172, 83);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  table {
+    width: 100%;
+
+    th {
+      text-align: left;
+    }
+
+    tr:not(:last-child) {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .btn-update,
+    .btn-delete {
+      background-color: blue;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-delete {
+      background-color: gray;
+    }
+  }
+}

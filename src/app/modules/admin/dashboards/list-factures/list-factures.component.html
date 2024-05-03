@@ -1,0 +1,44 @@
+<div class="container-fluid" style="width: 100%">
+    <div class="row">
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Title Column -->
+    <ng-container matColumnDef="customerOrSupplierId">
+        <th mat-header-cell *matHeaderCellDef>Client</th>
+        <td mat-cell *matCellDef="let element">{{ element.clientDetails.nom }} {{element.clientDetails.prenom}}</td>
+    </ng-container>
+<!-- name Column -->
+<ng-container matColumnDef="total_amount">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let element">{{ element.total_amount }}</td>
+</ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="real_total_amount">
+        <th mat-header-cell *matHeaderCellDef>real_total_amount</th>
+        <td mat-cell *matCellDef="let element">{{ element.real_total_amount }}</td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="facture_date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.facture_date | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+    </ng-container>
+    <!-- Date Column -->
+    
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+            <button (click)="deletefacture(element)" class="btn btn-danger btn-delete">
+                Delete
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<hr>         
+
+</div>
+</div>

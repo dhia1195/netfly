@@ -1,0 +1,71 @@
+<div class="container-fluid" style="width: 100%">
+  <div class="row">
+      <button
+          mat-flat-button
+          [routerLink]="'/dashboards/addfournisseurs'"
+          class="col-auto text-white"
+          style="background-color: rgb(83, 172, 83);"
+      >
+          <mat-icon>exposure_plus_1</mat-icon>
+          Add
+      </button>
+  </div>
+  <div class="row">
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Numéro</th>
+        <th scope="col">Email</th>
+        <th scope="col">Type</th>
+        <th scope="col">Actions</th> <!-- New column for action buttons -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fournisseur of fournisseurlist">
+        <td>{{ fournisseur.nom }}</td>
+        <td>{{ fournisseur.adresse }}</td>
+        <td>{{ fournisseur.numero }}</td>
+        <td>{{ fournisseur.email }}</td>
+        <td>{{ fournisseur.type }}</td>
+        <td>
+          <button [routerLink]="'/dashboards/updatefournisseurs/' + fournisseur._id" class="btn btn-info btn-update">
+            Edit
+        </button>
+          <button (click)="deleteFournisseur(fournisseur)" class="btn btn-danger">Delete</button>
+          <button [routerLink]="'/dashboards/meeting'" class="btn btn-info btn-update">
+
+            join meet
+        </button>
+          <!-- Add more buttons as needed -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <style>
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    .table th,
+    .table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+  
+    .table th {
+      background-color: #f2f2f2;
+    }
+  
+    .table tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  
+    .table tbody tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+  

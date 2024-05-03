@@ -1,0 +1,135 @@
+<div class="container">
+    <form [formGroup]="fournisseurForm" (ngSubmit)="addFournisseur()">
+        <div class="form-group">
+            <label for="nom">nom</label>
+            <input
+                formControlName="nom"
+                type="text"
+                class="form-control"
+                id="nom"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                fournisseurForm.get('nom').invalid &&
+                    (fournisseurForm.get('nom').touched ||
+                    fournisseurForm.get('nom').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="fournisseurForm.get('nom').errors?.required">
+                    Le nom est requis.
+                </div>
+                <div *ngIf="fournisseurForm.get('nom').errors?.minlength">
+                    Le nom doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <input
+                formControlName="adresse"
+                type="text"
+                class="form-control"
+                id="adresse"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                fournisseurForm.get('adresse').invalid &&
+                    (fournisseurForm.get('adresse').touched ||
+                    fournisseurForm.get('adresse').dirty)
+                "
+                class="text-danger"
+            >
+                <div
+                    *ngIf="fournisseurForm.get('adresse').errors?.required"
+                >
+                    La description est requise.
+                </div>
+                <div
+                    *ngIf="fournisseurForm.get('adresse').errors?.minlength"
+                >
+                    La description doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="numero">numero</label>
+            <input
+                formControlName="numero"
+                type="number"
+                class="form-control"
+                id="numero"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                fournisseurForm.get('numero').invalid &&
+                    (fournisseurForm.get('numero').touched ||
+                    fournisseurForm.get('numero').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="fournisseurForm.get('numero').errors?.required">
+                    Le numero est requis.
+                </div>
+                <div *ngIf="fournisseurForm.get('numero').errors?.minlength">
+                    Le numero doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                fournisseurForm.get('email').invalid &&
+                    (fournisseurForm.get('email').touched ||
+                    fournisseurForm.get('email').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="fournisseurForm.get('email').errors?.required">
+                    La email est requise.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="type">type</label>
+            <input
+                formControlName="type"
+                type="text"
+                class="form-control"
+                id="type"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                fournisseurForm.get('type').invalid &&
+                    (fournisseurForm.get('type').touched ||
+                    fournisseurForm.get('type').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="fournisseurForm.get('type').errors?.required">
+                    La type est requise.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">
+            Ajouter fournisseur
+        </button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="ajoutAvecSucces" class="alert alert-success mt-2">
+            fournisseur ajoutée avec succès !
+        </div>
+    </form>
+</div>

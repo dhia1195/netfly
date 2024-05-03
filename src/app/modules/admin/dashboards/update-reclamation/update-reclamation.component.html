@@ -1,0 +1,87 @@
+<div class="container">
+    <form [formGroup]="reclamationForm" (ngSubmit)="updateReclamation()">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Title</label>
+            <input
+                formControlName="title"
+                type="text"
+                class="form-control"
+                id="formGroupExampleInput"
+                placeholder="Example input"
+            />
+            <div
+                *ngIf="
+                    reclamationForm.get('title').invalid &&
+                    (reclamationForm.get('title').touched ||
+                        reclamationForm.get('title').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="reclamationForm.get('title').errors['required']">
+                    Le nom est requis.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Description</label>
+            <input
+                formControlName="description"
+                type="text"
+                class="form-control"
+                id="formGroupExampleInput"
+                placeholder="Example input"
+            />
+            <div
+                *ngIf="
+                    reclamationForm.get('description').invalid &&
+                    (reclamationForm.get('description').touched ||
+                        reclamationForm.get('description').dirty)
+                "
+                class="text-danger"
+            >
+                <div
+                    *ngIf="
+                        reclamationForm.get('description').errors['required']
+                    "
+                >
+                    L'description est requise.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Date</label>
+            <input
+                formControlName="date"
+                type="date"
+                class="form-control"
+                id="formGroupExampleInput"
+                placeholder="Example input"
+            />
+            <div
+                *ngIf="
+                    reclamationForm.get('date').invalid &&
+                    (reclamationForm.get('date').touched ||
+                        reclamationForm.get('date').dirty)
+                "
+                class="text-danger"
+            >
+                <div
+                    *ngIf="
+                        reclamationForm.get('date').errors['required']
+                    "
+                >
+                    L'date est requise.
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">
+            Modifier l'université
+        </button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="modifierAvecSucces" class="alert alert-success mt-2">
+            Reclamationdifiée avec succès !
+        </div>
+    </form>
+</div>

@@ -1,0 +1,78 @@
+<style>
+  .btn-update {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-delete {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="query" (input)="searchClients()">
+    </div>
+    <div class="col-md-6 text-right">
+      <button mat-flat-button class="btn btn-success" [routerLink]="'/dashboards/addclients'">
+        <mat-icon>exposure_plus_1</mat-icon>
+        Add
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clientsList">
+            <td>{{ client.prenom }}</td>
+            <td>{{ client.nom }}</td>
+            <td>{{ client.adresse }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.numrTel }}</td>
+            <td>
+              <button class="btn-update" [routerLink]="'/dashboards/updateclients/' + client._id">
+                Update
+              </button>
+              <button class="btn-delete" (click)="deleteClient(client._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add a container for the pie chart -->
+  <div class="container-fluid">
+    <ngx-charts-pie-chart
+[results]="addressDistributionData"
+[view]="pieChartView1"
+[legend]="true"
+[explodeSlices]="true"
+>
+<ng-template #pieChartLabel let-entry="entry">
+  {{ entry.label }} 
+</ng-template>
+</ngx-charts-pie-chart>
+  </div>
