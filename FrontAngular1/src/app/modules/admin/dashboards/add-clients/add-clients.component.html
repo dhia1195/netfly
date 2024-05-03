@@ -1,0 +1,29 @@
+<form [formGroup]="addClientForm" (ngSubmit)="addclient()">
+    <h2>Add New Client</h2>
+    <div>
+      <label for="nom">First name:</label>
+      <input type="text" id="nom" formControlName="nom" name="nom" />
+    </div>
+    <div>
+        <label for="prenom">Last name:</label>
+        <input type="text" id="prenom" formControlName="prenom" />
+      </div>
+      <div>
+        <label for="adresse">Adress:</label>
+        <input type="text" id="adresse" formControlName="adresse" />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" formControlName="email" />
+      </div>
+
+      <div>
+        <label for="numrTel">Phone number:</label>
+        <input type="number" id="numrTel" formControlName="numrTel" />
+      </div>
+    
+    
+    
+    <button type="submit">Add a client</button>
+  </form>
+  

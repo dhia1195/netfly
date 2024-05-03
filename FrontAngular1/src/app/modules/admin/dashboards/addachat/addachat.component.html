@@ -1,0 +1,33 @@
+<form [formGroup]="achatForm" (ngSubmit)="addAchat()">
+    <h2>Add New Vente</h2>
+    <div>
+      <label for="article">article</label>
+      <input type="text" id="article" formControlName="article" />
+    </div>
+    <div>
+        <label for="quantity">quantity</label>
+        <input type="number" id="quantity" formControlName="quantity" />
+      </div>
+      <div>
+        <label for="prix_unitaire">prix unitaire</label>
+        <input type="number" id="prix_unitaire" formControlName="prix_unitaire" />
+      </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" formControlName="date" />
+    </div>
+    <div>
+      <label for="paiement"> Paiement:</label>
+      <input type="text" id="paiement" formControlName="paiement" />
+    </div>
+    <!-- Supprimer le formGroupName pour les détails du client -->
+    <div>
+      <select formControlName="fournIds">
+        <option *ngFor="let option of listFourn" [value]="option._id">{{ option.nom }}</option>
+      </select>
+    </div>
+    <button type="submit">Add Achat</button>
+    <div *ngIf="ajoutAvecSucces" class="alert alert-success mt-2">
+      achats ajoutée avec succès !
+  </div>
+  </form>

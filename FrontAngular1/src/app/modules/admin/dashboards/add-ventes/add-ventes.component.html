@@ -1,0 +1,39 @@
+<form [formGroup]="addVenteForm" (ngSubmit)="addVente()">
+    <h2>Add New Vente</h2>
+    
+      <div>
+        <ng-multiselect-dropdown
+          formControlName="produits"
+          [placeholder]="'Produits'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelect)="onItemDeSelect($event)"
+        >
+  </ng-multiselect-dropdown>
+      
+      
+    </div>
+
+    <div *ngFor="let selectedProduct of selectedProductIds">
+      <label [for]="'quantity_' + selectedProduct.item_text">{{ selectedProduct.item_text }} Quantity:</label>
+      <input type="number" [id]="'quantity_' + selectedProduct.item_text"  (input)="updateQuantity(selectedProduct.id, $event.target.value)" />
+    </div>
+
+  <div>
+    <label for="dateV">Date:</label>
+    <input type="date" id="dateV" formControlName="dateV" />
+  </div>
+  <div>
+    <label for="statut_paiement">Statut Paiement:</label>
+    <input type="checkbox" id="statut_paiement" formControlName="statut_paiement" />
+  </div>
+  <!-- Supprimer le formGroupName pour les détails du client -->
+  <div>
+    <select formControlName="clients" (change)="onClientSelected($event.target.value)">
+      <option *ngFor="let option of listClient" [value]="option._id">{{ option.nom }}</option>
+    </select>
+  </div>
+  <button type="submit">Add Vente</button>
+</form>

@@ -1,0 +1,25 @@
+.btn-update, .btn-delete {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-update {
+    background-color: #17a2b8;
+    color: #fff;
+    border: 1px solid #17a2b8;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #dc3545;
+  }
+  
+  .btn-update:hover, .btn-delete:hover {
+    opacity: 0.8;
+  }
+  

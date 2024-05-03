@@ -1,0 +1,79 @@
+<div class="container">
+    <form [formGroup]="reclamationForm" (ngSubmit)="addReclamation()">
+        <div class="form-group">
+            <label for="title">Titre</label>   
+            <input
+                formControlName="title"
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                    reclamationForm.get('title').invalid &&
+                    (reclamationForm.get('title').touched ||
+                        reclamationForm.get('title').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="reclamationForm.get('title').errors?.required">
+                    Le nom est requis.
+                </div>
+                <div *ngIf="reclamationForm.get('title').errors?.minlength">
+                    Le nom doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input
+                formControlName="description"
+                type="text"
+                class="form-control"
+                id="description"
+                placeholder="Exemple de saisie"
+            />
+            <div
+                *ngIf="
+                    reclamationForm.get('description').invalid &&
+                    (reclamationForm.get('description').touched ||
+                        reclamationForm.get('description').dirty)
+                "
+                class="text-danger"
+            >
+                <div
+                    *ngIf="reclamationForm.get('description').errors?.required"
+                >
+                    La description est requise.
+                </div>
+                <div
+                    *ngIf="reclamationForm.get('description').errors?.minlength"
+                >
+                    La description doit comporter au moins 3 caractères.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="user">UserName</label>
+            <select formControlName="user" class="form-control">
+                <option *ngFor="let user of userList" [value]="user._id">{{ user.name }}</option>
+            </select>
+            
+            <!-- Vérification de nullité avec l'opérateur de navigation sécurisé -->
+            <div *ngIf="reclamationForm.get('user')?.invalid && reclamationForm.get('user')?.touched" class="text-danger">
+                Le user est requis.
+            </div>
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary mt-2">
+            Ajouter réclamation
+        </button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="ajoutAvecSucces" class="alert alert-success mt-2">
+            Réclamation ajoutée avec succès !
+        </div>
+    </form>
+</div>

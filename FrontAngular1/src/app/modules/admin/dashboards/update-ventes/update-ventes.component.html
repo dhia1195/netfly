@@ -1,0 +1,20 @@
+<form [formGroup]="venteForm" (ngSubmit)="updateVente()" class="vente-form">
+  <div class="form-group">
+    <label for="id_produit">ID Produit :</label>
+    <input type="text" id="id_produit" formControlName="id_produit" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="dateV">Date:</label>
+    <input type="date" id="dateV" formControlName="dateV" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="statut_paiement">Statut Paiement:</label>
+    <input type="checkbox" id="statut_paiement" formControlName="statut_paiement" class="form-check-input" />
+  </div>
+  <div class="form-group">
+    <label for="clientId">ID Client:</label>
+    <input type="text" id="clientId" formControlName="clients" class="form-control" />
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Update Vente</button>
+</form>

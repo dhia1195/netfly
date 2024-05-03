@@ -1,0 +1,45 @@
+<div class="container">
+    <form [formGroup]="fournisseursForm" (ngSubmit)="updateFournisseur()">
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input formControlName="nom" type="text" class="form-control" id="nom" placeholder="Entrez le nom">
+            <div *ngIf="fournisseursForm.get('nom').invalid && (fournisseursForm.get('nom').touched || fournisseursForm.get('nom').dirty)" class="text-danger">
+                <div *ngIf="fournisseursForm.get('nom').errors?.required">Le nom est requis.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <input formControlName="adresse" type="text" class="form-control" id="adresse" placeholder="Entrez l'adresse">
+            <div *ngIf="fournisseursForm.get('adresse').invalid && (fournisseursForm.get('adresse').touched || fournisseursForm.get('adresse').dirty)" class="text-danger">
+                <div *ngIf="fournisseursForm.get('adresse').errors?.required">L'adresse est requise.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="numero">Numéro</label>
+            <input formControlName="numero" type="number" class="form-control" id="numero" placeholder="Entrez le numéro">
+            <div *ngIf="fournisseursForm.get('numero').invalid && (fournisseursForm.get('numero').touched || fournisseursForm.get('numero').dirty)" class="text-danger">
+                <div *ngIf="fournisseursForm.get('numero').errors?.required">Le numéro est requis.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Entrez l'email">
+            <div *ngIf="fournisseursForm.get('email').invalid && (fournisseursForm.get('email').touched || fournisseursForm.get('email').dirty)" class="text-danger">
+                <div *ngIf="fournisseursForm.get('email').errors?.required">L'email est requis.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input formControlName="type" type="text" class="form-control" id="type" placeholder="Entrez le type">
+            <div *ngIf="fournisseursForm.get('type').invalid && (fournisseursForm.get('type').touched || fournisseursForm.get('type').dirty)" class="text-danger">
+                <div *ngIf="fournisseursForm.get('type').errors?.required">Le type est requis.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Modifier le fournisseur</button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="modifierAvecSucces" class="alert alert-success mt-2">
+            Fournisseur modifié avec succès !
+        </div>
+    </form>
+</div>

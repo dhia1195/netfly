@@ -1,0 +1,46 @@
+<div class="container">
+    <form [formGroup]="achatsForm" (ngSubmit)="updateAchat()">
+        <div class="form-group">
+            <label for="article">article :  </label>
+            <input formControlName="article" type="text" class="form-control" id="article" placeholder="Entrez le nom">
+            <div *ngIf="achatsForm.get('article').invalid && (achatsForm.get('article').touched || achatsForm.get('article').dirty)" class="text-danger">
+                <div *ngIf="achatsForm.get('article').errors?.required">Le article est requis.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="quantity">quantity</label>
+            <input formControlName="quantity" type="number" class="form-control" id="quantity" placeholder="Entrez l'quantity">
+            <div *ngIf="achatsForm.get('quantity').invalid && (achatsForm.get('quantity').touched || achatsForm.get('quantity').dirty)" class="text-danger">
+                <div *ngIf="achatsForm.get('quantity').errors?.required">L'adresse est requise.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="prix_unitaire">prix unitaire</label>
+            <input formControlName="prix_unitaire" type="number" class="form-control" id="prix_unitaire" placeholder="Entrez le numéro">
+            <div *ngIf="achatsForm.get('prix_unitaire').invalid && (achatsForm.get('prix_unitaire').touched || achatsForm.get('prix_unitaire').dirty)" class="text-danger">
+                <div *ngIf="achatsForm.get('prix_unitaire').errors?.required">Le numéro est requis.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date">date</label>
+            <input formControlName="date" type="date" class="form-control" id="date" placeholder="Entrez l'email">
+            <div *ngIf="achatsForm.get('date').invalid && (achatsForm.get('date').touched || achatsForm.get('date').dirty)" class="text-danger">
+                <div *ngIf="achatsForm.get('date').errors?.required">L'date est requis.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="paiement">paiement</label>
+            <input formControlName="paiement" type="paiement" class="form-control" id="paiement" placeholder="Entrez l'paiement">
+            <div *ngIf="achatsForm.get('paiement').invalid && (achatsForm.get('paiement').touched || achatsForm.get('paiement').dirty)" class="text-danger">
+                <div *ngIf="achatsForm.get('paiement').errors?.required">L'date est requis.</div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-2">Modifier le fournisseur</button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="modifierAvecSucces" class="alert alert-success mt-2">
+            Fournisseur modifié avec succès !
+        </div>
+    </form>
+</div>

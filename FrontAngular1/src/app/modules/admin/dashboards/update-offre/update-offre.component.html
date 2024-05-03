@@ -1,0 +1,108 @@
+<div class="container">
+    <form [formGroup]="offreForm" (ngSubmit)="updateOffre()">
+        <div class="form-group">
+            <label for="reduction">Reduction</label>
+            <input
+                formControlName="reduction"
+                type="text"
+                class="form-control"
+                id="reduction"
+                placeholder="Reduction"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('reduction').invalid &&
+                    (offreForm.get('reduction').touched ||
+                        offreForm.get('reduction').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="offreForm.get('reduction').errors['required']">
+                    La réduction est requise.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="condition">Condition</label>
+            <input
+                formControlName="condition"
+                type="text"
+                class="form-control"
+                id="condition"
+                placeholder="Condition"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('condition').invalid &&
+                    (offreForm.get('condition').touched ||
+                        offreForm.get('condition').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="offreForm.get('condition').errors['required']">
+                    La condition est requise.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dateD">Date de Début</label>
+            <input
+                formControlName="dateD"
+                type="date"
+                class="form-control date-input"
+                id="dateD"
+                placeholder="Date de Début"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('dateD').invalid &&
+                    (offreForm.get('dateD').touched || offreForm.get('dateD').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="offreForm.get('dateD').errors['required']">
+                    La date de début est requise.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dateF">Date de Fin</label>
+            <input
+                formControlName="dateF"
+                type="date"
+                class="form-control date-input"
+                id="dateF"
+                placeholder="Date de Fin"
+            />
+            <div
+                *ngIf="
+                    offreForm.get('dateF').invalid &&
+                    (offreForm.get('dateF').touched || offreForm.get('dateF').dirty)
+                "
+                class="text-danger"
+            >
+                <div *ngIf="offreForm.get('dateF').errors['required']">
+                    La date de fin est requise.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="produits">Produit</label>
+            <select formControlName="produits" class="form-control" id="produits">
+                <option *ngFor="let produit of produitsList" [value]="produit._id">{{ produit.nom }}</option>
+            </select>
+            <div *ngIf="offreForm.get('produits').invalid && (offreForm.get('produits').touched || offreForm.get('produits').dirty)" class="text-danger">
+                <div *ngIf="offreForm.get('produits').errors['required']">Veuillez sélectionner un produit.</div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">
+            Modifier l'offre
+        </button>
+
+        <!-- Afficher le message de succès -->
+        <div *ngIf="modifierAvecSucces" class="alert alert-success mt-2">
+            Offre modifiée avec succès !
+        </div>
+    </form>
+</div>

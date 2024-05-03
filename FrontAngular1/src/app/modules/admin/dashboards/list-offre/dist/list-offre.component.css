@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* Styles for Update button */
+.btn-update {
+  /* Ajoutez vos styles personnalisés ici */
+  background-color: #17a2b8;
+  /* Changez la couleur de fond */
+  color: #fff;
+  /* Changez la couleur du texte */
+  border-color: #17a2b8;
+  /* Changez la couleur de la bordure */
+}
+
+.btn-update:hover {
+  background-color: #138496;
+  /* Changez la couleur de fond au survol */
+  border-color: #117a8b;
+  /* Changez la couleur de la bordure au survol */
+}
+
+/* Styles for Delete button */
+.btn-delete {
+  /* Ajoutez vos styles personnalisés ici */
+  background-color: #dc3545;
+  /* Changez la couleur de fond */
+  color: #fff;
+  /* Changez la couleur du texte */
+  border-color: #dc3545;
+  /* Changez la couleur de la bordure */
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  /* Changez la couleur de fond au survol */
+  border-color: #bd2130;
+  /* Changez la couleur de la bordure au survol */
+}
